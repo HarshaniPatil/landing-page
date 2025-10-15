@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="web page.css">
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍔 FoodExpress</h1>
+            <p class="tagline">Delicious meals delivered to your doorstep</p>
+        </header>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search for dishes, restaurants..." id="searchInput">
+        </div>
+
+        <div class="categories">
+            <button class="category-btn active" onclick="filterCategory('all')">All</button>
+            <button class="category-btn" onclick="filterCategory('burger')">🍔 Burgers</button>
+            <button class="category-btn" onclick="filterCategory('pizza')">🍕 Pizza</button>
+            <button class="category-btn" onclick="filterCategory('asian')">🍜 Asian</button>
+            <button class="category-btn" onclick="filterCategory('dessert')">🍰 Desserts</button>
+            <button class="category-btn" onclick="filterCategory('drinks')">🥤 Drinks</button>
+        </div>
+
+        <div class="food-grid" id="foodGrid"></div>
+
+        <div class="cart" onclick="showCart()">
+            🛒 Cart <span class="cart-count" id="cartCount">0</span>
+        </div>
+    </div>
+    <script src="web page.js"></script>
+
+
+</body>
+</html>
