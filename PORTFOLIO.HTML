@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshani Patil - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #03045e 0%, #764ba2 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero {
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .profile-image {
+            margin-bottom: 2rem;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        .profile-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #ffd700;
+            object-fit: cover;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .profile-image img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(255, 215, 0, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: slideDown 1s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 2rem;
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem auto;
+            max-width: 600px;
+            animation: slideUp 1s ease-out;
+        }
+
+        .contact-info p {
+            margin: 0.8rem 0;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #ffd700;
+            color: #333;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 2px solid #ffd700;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .about {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .about-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .skills {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skills h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #ffd700;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 215, 0, 0.2);
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .projects {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .projects h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #ffd700;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .project-card p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .contact {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: #ffd700;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">HP</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="profile-image">
+            <img src="C:\Users\Harshani Patil\Downloads\my photo.jpeg" alt="Harshani Patil" id="profileImg">
+        </div>
+        <h1>Harshani Patil</h1>
+        <h2>Frontend Developer & Engineering Student</h2>
+        <p>Third Year Computer Engineering Student at Datta Meghe College of Engineering, Airoli</p>
+        <div class="contact-info">
+            <p><strong>📧 Email:</strong> harshanipatil119@example.com</p>
+            <p><strong>📱 Phone:</strong> +91 9137404162</p>
+            <p><strong>📍 Location:</strong> Airoli, Navi Mumbai, Maharashtra</p>
+            <p><strong>🔗 LinkedIn:</strong> linkedin.com/in/harshanipatil</p>
+            <p><strong>💻 GitHub:</strong> github.com/HarshaniPatil</p>
+        </div>
+        <div class="hero-buttons">
+            <a href="#contact" class="btn">Get In Touch</a>
+            <a href="#" class="btn btn-secondary" onclick="downloadResume(event)">Download Resume</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>Hello! I'm Harshani Patil, a passionate third-year Computer Engineering student at Datta Meghe College of Engineering, Airoli. I love creating beautiful and functional web experiences.</p>
+            <p>With a strong foundation in frontend technologies, I'm constantly learning and exploring new ways to build innovative solutions that make a difference.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>HTML</h3>
+                <p>Semantic markup</p>
+            </div>
+            <div class="skill-card">
+                <h3>CSS</h3>
+                <p>Responsive design</p>
+            </div>
+            <div class="skill-card">
+                <h3>JavaScript</h3>
+                <p>Interactive features</p>
+            </div>
+            <div class="skill-card">
+                <h3>React</h3>
+                <p>Modern UI development</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Project One</h3>
+                <p>A responsive web application built with React, featuring dynamic content and smooth animations.</p>
+                <p><strong>Technologies:</strong> React, CSS, JavaScript</p>
+            </div>
+            <div class="project-card">
+                <h3>Project Two</h3>
+                <p>An interactive landing page showcasing modern design principles and user experience.</p>
+                <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+            </div>
+            <div class="project-card">
+                <h3>Project Three</h3>
+                <p>A portfolio website with custom animations and responsive layout for all devices.</p>
+                <p><strong>Technologies:</strong> HTML, CSS, JavaScript</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <textarea placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Harshani Patil. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            e.target.reset();
+        }
+
+        // Skill card animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .project-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Profile image upload
+        document.getElementById('profileImg').addEventListener('click', function() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        document.getElementById('profileImg').src = event.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        });
+
+        // Download Resume function
+        function downloadResume(e) {
+            e.preventDefault();
+            alert('Resume download would start here. Please add your resume PDF link!');
+            // To use: replace the alert with this line and add your resume URL
+            // window.open('path-to-your-resume.pdf', '_blank');
+        }
+    </script>
+</body>
+</html>
